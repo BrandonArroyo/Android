@@ -1,17 +1,33 @@
 package com.tophatapps.funfacts;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 
-public class FunFactsActivity extends ActionBarActivity {
+public class FunFactsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fun_facts);
+
+        //declare are view  variables and assign views
+        final TextView factLable = (TextView) findViewById(R.id.factTextView);
+        Button showFactButton = (Button) findViewById(R.id.showFactButton);
+        View.OnClickListener listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                //button was clicked add new fact
+                String fact = "Ostriches can run faster than horses.";
+                factLable.setText(fact);
+            }
+        };
+        showFactButton.setOnClickListener(listener);
     }
 
     @Override
